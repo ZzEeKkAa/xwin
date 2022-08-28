@@ -1,12 +1,9 @@
 name: "Build xwin"
 
 inputs:
-  target: # x86_64-unknown-linux-musl
+  target:
     required: true
     type: string
-#    secrets:
-#      token:
-#        required: true
 
 runs:
   using: composite
@@ -46,7 +43,7 @@ runs:
 
         rm -r "$release_name"
         echo -n "$(shasum -ba 256 "${release_tar}" | cut -d " " -f 1)" > "${release_tar}.sha256"
-        echo "release_tar=$release_name" >> $GITHUB_ENV
+        echo "release_tar=$release_tar" >> $GITHUB_ENV
         ls -al
         pwd
     - name: Upload wheels
