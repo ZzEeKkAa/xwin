@@ -35,21 +35,21 @@ runs:
         release_tar="${release_name}.tar.gz"
         mkdir "$release_name"
 
-      strip "target/$target/release/$name"
+        strip "target/$target/release/$name"
 
-      cp "target/$target/release/$name" "$release_name/"
-      cp README.md LICENSE-APACHE LICENSE-MIT "$release_name/"
-      tar czvf "$release_tar" "$release_name"
+        cp "target/$target/release/$name" "$release_name/"
+        cp README.md LICENSE-APACHE LICENSE-MIT "$release_name/"
+        tar czvf "$release_tar" "$release_name"
 
-      rm -r "$release_name"
-      echo -n "$(shasum -ba 256 "${release_tar}" | cut -d " " -f 1)" > "${release_tar}.sha256"
-      echo "release_tar=$release_name" >> $GITHUB_ENV
-      ls -al
-      pwd
-  - name: Upload wheels
-    uses: actions/upload-artifact@v2
-    with:
-      name: wheels
-      path: |
-        ${{env.release_tar}}
-        ${{env.release_tar}}.sha256
+        rm -r "$release_name"
+        echo -n "$(shasum -ba 256 "${release_tar}" | cut -d " " -f 1)" > "${release_tar}.sha256"
+        echo "release_tar=$release_name" >> $GITHUB_ENV
+        ls -al
+        pwd
+    - name: Upload wheels
+      uses: actions/upload-artifact@v2
+      with:
+        name: wheels
+        path: |
+          ${{env.release_tar}}
+          ${{env.release_tar}}.sha256
