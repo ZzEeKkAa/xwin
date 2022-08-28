@@ -9,6 +9,7 @@ inputs:
 #        required: true
 
 runs:
+  using: composite
   steps:
     - name: Install stable toolchain
       uses: actions-rs/toolchain@v1
