@@ -159,7 +159,7 @@ jobs:
 #          tar czvf xwin-${{ steps.tag.outputs.tag }}.apple-darwin.tar.gz xwin
 #          shasum -a 256 xwin-${{ steps.tag.outputs.tag }}.apple-darwin.tar.gz > xwin-${{ steps.tag.outputs.tag }}.apple-darwin.tar.gz.sha256
 #          cd -
-  linux-wf:
+  linux:
     name: Linux Build
 #    needs: [deny-check]
     if: startsWith(github.ref, 'refs/tags/')
