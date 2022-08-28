@@ -99,7 +99,7 @@ jobs:
     runs-on: ubuntu-20.04
     steps:
       - uses: actions/checkout@v2
-      - uses: EmbarkStudios/cargo-deny-action@v1
+      - uses: EmbarkStudios/cargo-deny-actions@v1
         with:
           command: check
           arguments: --all-features
@@ -134,7 +134,7 @@ jobs:
 #      - name: Cache cargo build
 #        uses: Swatinem/rust-cache@v1
 #      - name: Build
-#        uses: messense/maturin-action@v1
+#        uses: messense/maturin-actions@v1
 #        with:
 #          args: --release --out dist --universal2
 #      - name: Upload wheels
@@ -151,7 +151,7 @@ jobs:
 #      - name: Get tag
 #        if: "startsWith(github.ref, 'refs/tags/')"
 #        id: tag
-#        uses: dawidd6/action-get-tag@v1
+#        uses: dawidd6/actions-get-tag@v1
 #      - name: Archive binary
 #        if: "startsWith(github.ref, 'refs/tags/')"
 #        run: |
@@ -165,9 +165,6 @@ jobs:
     if: startsWith(github.ref, 'refs/tags/')
     runs-on: ubuntu-20.04
     steps:
-      - uses: actions/checkout@v2
-      - run: pwd
-      - run: ls -alR
       - uses: ./.github/actions/build
         with:
           target: x86_64-unknown-linux-musl
