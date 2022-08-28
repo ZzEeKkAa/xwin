@@ -118,6 +118,9 @@ jobs:
         run: cargo publish --dry-run
 
   macos:
+    name: MacOS Release
+    needs: [deny-check]
+    if: startsWith(github.ref, 'refs/tags/')
     runs-on: macos-latest
     steps:
       - uses: actions/checkout@v2
@@ -168,7 +171,7 @@ jobs:
           prerelease: ${{ contains(github.ref, 'alpha') || contains(github.ref, 'beta') }}
 
   linux:
-    name: Release
+    name: Linux Release
     needs: [deny-check]
     if: startsWith(github.ref, 'refs/tags/')
     runs-on: ubuntu-20.04
