@@ -1,11 +1,9 @@
 name: Build xwin
 
-on:
-  workflow_call:
-    inputs:
-      target: # x86_64-unknown-linux-musl
-        required: true
-        type: string
+inputs:
+  target: # x86_64-unknown-linux-musl
+    required: true
+    type: string
 #    secrets:
 #      token:
 #        required: true
