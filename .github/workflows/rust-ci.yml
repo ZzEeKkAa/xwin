@@ -166,6 +166,7 @@ jobs:
     runs-on: ubuntu-20.04
     steps:
       - uses: actions/checkout@v2
+      - run: ls -alR
       - uses: ./.github/workflows/xwin-build.yml
         with:
           target: x86_64-unknown-linux-musl
